@@ -53,6 +53,7 @@ a,服务器环境
 4, 生成服务端
 
    GOOS=linux GOARCH=amd64 make release-server
+   
 5, 生成客户端
 
     GOOS=windows GOARCH=amd64 make release-client    //windows 64位
