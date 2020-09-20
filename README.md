@@ -9,12 +9,13 @@ a,服务器环境
      11》下载：wget https://storage.googleapis.com/golang/go1.12.5.linux-amd64.tar.gz (需要翻墙)
      22》解压：tar -xzf go1.12.5.linux-amd64.tar.gz
      33》配置：
+            
           vim ~/.bashrc
 
             export GOPATH=/(你的目录)/Go
             export GOROOT=/(你的目录)/go
             export PATH=$PATH:$GOROOT/bin
-          source ~/.bashrc
+            source ~/.bashrc
           
  b,安装Ngrok
   1，下载Ngrok源码
