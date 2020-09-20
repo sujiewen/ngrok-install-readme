@@ -3,9 +3,13 @@
 Ngrok搭建内网穿透--Centos 6.x, 7.x 
 
 a,服务器环境
+
   1,安装gcc,yum install gcc -y 
+  
   2,安装git, yum install git -y
+  
   3,安装go语言环境，请安装go(安装1.12.5版本切记，go1.15我试了存在问题，有知道人可以指点一下)
+  
      11》下载：wget https://storage.googleapis.com/golang/go1.12.5.linux-amd64.tar.gz (需要翻墙)
      22》解压：tar -xzf go1.12.5.linux-amd64.tar.gz
      33》配置：
@@ -23,6 +27,7 @@ a,服务器环境
       git clone https://github.com/inconshreveable/ngrok.git
       
   2,  生成证书
+  
       cd ngrok    
 
         export NGROK_DOMAIN="ngrok.xx.com"    //记得域名换成自己的
@@ -49,7 +54,9 @@ a,服务器环境
 
    GOOS=linux GOARCH=amd64 make release-server
 5, 生成客户端
+
     GOOS=windows GOARCH=amd64 make release-client    //windows 64位
+    
     GOOS=windows GOARCH=amd64 make release-client    //windows 32位
 
     GOOS=darwin GOARCH=386 make release-client        //Mac OS 32位
@@ -60,9 +67,12 @@ a,服务器环境
     GOOS=linux GOARCH=arm  make release-client        //ARM 平台
     
 c, 启动服务端
+
   cd /usr/local/ngrok
   ./bin/ngrokd -domain="ngrok.xx.com"  -httpAddr=":80" -httpsAddr=":443" -tunnelAddr=":4443"
+  
 d, 启动客户端
+
   1， ngrok.cfg内容：
      server_addr: "ngrok.xx.com:4443"
      trust_host_root_certs: false
@@ -70,9 +80,11 @@ d, 启动客户端
      ngrok -config=ngrok.cfg -subdomain test 80
     // test就是你想要访问域名的前缀
     // 80表示本地需要穿透的端口
+    
 e,   6.x,7.x添加服务，有点差别，
 
   1, 6.x
+  
       #!/bin/sh  
       #chkconfig:2345 70 30  
       #description:ngrok  
@@ -89,6 +101,7 @@ e,   6.x,7.x添加服务，有点差别，
           ;;
           
    2, 7.x
+   
       [Unit]
       Description=Share local port(s) with ngrok
       After=syslog.target network.target
